@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>The Giferator</title>
+  <title>The Giferator Test</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
@@ -13,7 +13,7 @@
           <label>Email address</label>
           <input id="Searchbox" placeholder="Search terms"><br>
           <input  id="find-gifs" type="submit" value="Gif Search">
-
+          <!-- <button class="btn btn-primary" type="submit" id="submitButton"></button> -->
         
     </form>
     <div id="gifs-go-here"></div>
@@ -23,8 +23,6 @@
   
 
     $("#find-gifs").on("click", function(event) {
-      //
-      
       event.preventDefault();
 
       var userInput = $("#Searchbox").val();
@@ -38,28 +36,43 @@
         method: "GET"
       }).then(function(response) {
         var imageUrl = response.data.image_original_url;
-        // var stillImage = $("<img>");
+        var stillImage = $("<img>");
         var results = response.data;
-        // console.log(response);
+        var stillGif = data-response.data.images.original_still;
+        console.log(response);
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + results[i].rating);
                 var gifImage = $("<img>");
-
                 gifImage.attr("src", results[i].images.fixed_height.url);
                 gifDiv.prepend(p);
                 gifDiv.append(gifImage);
-                $("#gifs-go-here").prepend(gifDiv); 
-                // console.log(gifImage.results[i].images.original_still.url); 
+                $("#gifs-go-here").prepend(gifDiv);  
             }
-                var imageUrl = response.data.images.original.url;
-                var stillImage = results[i].images.original_still.url;
       });
+
+        
+ 
     });
-   
-    
+
+// $(stillImage).click (function(event) {
+//     event.preventDefault();
+//     $("#")
+
+
+
+    // if (imageUrl != stillGif) {
+//     this.attr(img"src", stillGif);
+// } else (gifImage.imageUrl === stillGif) {
+// gifImage.attr("src",imageUrl);
+// console.log(response.data);
+// }
+
+// });
 
   </script>
+  
+  
   </div>
 </body>
 
