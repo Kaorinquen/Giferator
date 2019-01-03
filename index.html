@@ -13,7 +13,7 @@
           <label>Email address</label>
           <input id="Searchbox" placeholder="Search terms"><br>
           <input  id="find-gifs" type="submit" value="Gif Search">
-
+          <div id="buttons-go-here"></div>
         
     </form>
     <div id="gifs-go-here"></div>
@@ -37,6 +37,7 @@
         url: queryURL,
         method: "GET"
       }).then(function(response) {
+        var buttongen = $("<button>") // add border styling to adjust buttons
         var imageUrl = response.data.image_original_url;
         // var stillImage = $("<img>");
         var results = response.data;
@@ -45,7 +46,8 @@
                 var gifDiv = $("<div>");
                 var p = $("<p>").text("Rating: " + results[i].rating);
                 var gifImage = $("<img>");
-
+                buttongen.text(userInput);
+                $("#buttons-go-here").prepend(p).prepend(buttongen);
                 gifImage.attr("src", results[i].images.fixed_height.url);
                 gifDiv.prepend(p);
                 gifDiv.append(gifImage);
@@ -55,6 +57,7 @@
                 var imageUrl = response.data.images.original.url;
                 var stillImage = results[i].images.original_still.url;
       });
+      
     });
    
     
