@@ -36,7 +36,7 @@
       $.ajax({
         url: queryURL,
         method: "GET"
-      }).then(function(response) {
+      }).then(function Giferator(response) {
         var buttongen = $("<button>") // add border styling to adjust buttons
         var imageUrl = response.data.image_original_url;
         // var stillImage = $("<img>");
@@ -56,6 +56,18 @@
             }
                 var imageUrl = response.data.images.original.url;
                 var stillImage = results[i].images.original_still.url;
+          
+          //below part is sus, may not work    
+
+          $("<img>").each(benStiller, function(){
+            $("img").attr("img src" + imageURL);
+            $("img").attr("img src" + stillImage);
+
+          });
+          
+           $(benStiller).click() 
+
+
       });
       
     });
